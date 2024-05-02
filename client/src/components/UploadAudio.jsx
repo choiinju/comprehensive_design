@@ -10,7 +10,7 @@ const UploadAudio = () => {
 
   const handleUploadFile = () => {
     const formData = new FormData();
-    formData.append('voiceFile', selectedFile);
+    formData.append('audio', selectedFile);
 
     axios
       .post('http://localhost:8000/upload/', formData, {
