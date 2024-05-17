@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const UploadAudio = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [text, setText] = useState('');
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -19,6 +20,7 @@ const UploadAudio = () => {
         },
       })
       .then((res) => {
+        setText(res?.data ?? 'Sorry, Failed...');
         console.log('Success');
       })
       .catch((error) => {
@@ -30,6 +32,7 @@ const UploadAudio = () => {
     <div>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUploadFile}>Upload</button>
+      <div>{text}</div>
     </div>
   );
 };
