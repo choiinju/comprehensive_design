@@ -1,9 +1,8 @@
-import pickle
+from transformers import pipeline
+model_name_or_path = "/Users/ryan/Desktop/intoeng/comprehensive_design/server/intoeng/whisper_small_0428"
+asr = pipeline(model=model_name_or_path, task="automatic-speech-recognition")
 
-with open('/Users/ryan/Desktop/intoeng/comprehensive_design/server/intoeng/audioapp/whisper_small_0428.pkl', 'rb') as f:
-        asr = pickle.load(f)     
-
-def transcribe(audio_data):
+def transcribe(blob_data):
     # 음성 데이터를 파이프라인에 전달
-    transcription = asr(audio_data)
-    return transcription['text']  # 텍스트 추출
+    transcription = asr(blob_data)
+    return transcription['text'] 

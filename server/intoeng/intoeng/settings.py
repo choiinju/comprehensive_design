@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     "rest_framework",
     "audioapp",
     'corsheaders',
+    'channels'
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -73,7 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "intoeng.wsgi.application"
-
+ASGI_APPLICATION = 'intoeng.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
