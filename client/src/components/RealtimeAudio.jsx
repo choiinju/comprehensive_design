@@ -3,6 +3,9 @@ import styles from './realtime_audio.module.scss';
 import start from '../images/start.svg';
 import stop from '../images/stop.svg';
 import copy from '../images/copy.svg';
+import upload from '../images/upload.svg';
+import mic from '../images/mic.svg';
+import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import loading from '../images/loading.json';
@@ -173,11 +176,29 @@ const RealtimeAudio = () => {
           backgroundColor: 'white',
         }}
       >
-        <Link className={`${styles.logo}`} to="/">
-          INTOENG
+        <Link to="/">
+          <div style={{ display: 'flex' }}>
+            <div style={{ marginRight: '20px' }} />
+            <img
+              src={logo}
+              width={'160px'}
+              height={'53px'}
+              onClick={() => {
+                console.log('업로드');
+              }}
+            />
+          </div>
         </Link>
-
         <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={upload}
+            width={'35px'}
+            height={'35px'}
+            onClick={() => {
+              console.log('업로드');
+            }}
+          />
+          <div style={{ marginRight: '10px' }} />
           {recording ? (
             <img
               src={stop}
@@ -205,19 +226,32 @@ const RealtimeAudio = () => {
         </div>
       </div>
       <div style={{ marginTop: '100px' }} />
+
       <div className={`${styles.start_notice}`}>
+        <img
+          src={mic}
+          width={'75px'}
+          height={'86px'}
+          onClick={startRecording}
+          style={{ position: 'absolute', top: 0, left: '-100px' }}
+        />
         <div>
-          {`안녕하세요.\n저는 당신의 인도 영어 이해를 도와줄 도우미,`}
+          {`안녕하세요 😄\n저는 당신의 인도 아대륙 영어 이해를 도와줄 도우미,`}
           <span className={`${styles.orange}`}> INTOENG</span>
           {`입니다. \n녹음 방법과 주의사항을 안내해 드리겠습니다.\n\n`}
-          <span className={`${styles.bigger}`}>녹음 방법</span>
+          <span className={`${styles.bigger}`}>📌 녹음 방법</span>
           {`\n1) 우측 상단의`}
 
           <span className={`${styles.red}`}> 빨간 동그라미 버튼</span>
           {`을 클릭하면 녹음이 시작됩니다.\n2) 녹음을 중단하고 싶으시면, 동일한 위치의`}
           <span className={`${styles.black}`}> 멈춤 버튼</span>
           {`을 눌러주세요.\n\n`}
-          <span className={`${styles.bigger}`}>주의사항</span>
+
+          <span className={`${styles.bigger}`}>📌 파일 업로드 방법</span>
+          {`\n1) 우측 상단의`}
+          <span className={`${styles.black}`}> 업로드 아이콘</span>
+          {`을 클릭해 파일을 업로드 해주세요.\n\n`}
+          <span className={`${styles.bigger}`}>📌 주의사항</span>
           {`\n녹음 내역은 저장되지 않습니다.`}
         </div>
       </div>
