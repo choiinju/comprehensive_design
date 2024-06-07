@@ -1,8 +1,11 @@
 from transformers import pipeline
-model_name_or_path = "/Users/ryan/Desktop/intoeng/comprehensive_design/server/intoeng/whisper_small_0428"
-asr = pipeline(model=model_name_or_path, task="automatic-speech-recognition")
+import soundfile as sf
 
-def transcribe(blob_data):
-    # 음성 데이터를 파이프라인에 전달
-    transcription = asr(blob_data)
-    return transcription['text'] 
+def transcribe(audio_path):
+    with open('/Users/ryan/Desktop/intoeng/comprehensive_design/server/intoeng/audioapp/whisper_small_0428.pkl', 'rb') as f:
+        asr = pickle.load(f)       
+
+    audio_data, _ = sf.read(audio_path)  # 오디오 데이터만 추출 
+    transcription = asr(audio_data)
+    return transcription['text']  # 텍스트 추출
+
